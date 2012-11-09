@@ -12,12 +12,12 @@ $somecontent_rcs_message = strtolower($somecontent_rcs_message);
 $somecontent_rcs_invite = explode(" ", $somecontent_rcs_message);
 
 if($somecontent_rcs_message == "album"){
-    $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($somecontent_rcs_number) . '&message=www.rousseaukazi.com/testing3.php&format=json';
+    $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($somecontent_rcs_number) . '&message=www.rousseaukazi.com&format=json';
     $ch = curl_init($url); 
     $response = curl_exec($ch);
     curl_close($ch);
 } elseif ($somecontent_rcs_message == "megaphone") {
-    $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($somecontent_rcs_number) . '&message=www.rousseaukazi.com/testing3.php&format=json';
+    $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($somecontent_rcs_number) . '&message=www.rousseaukazi.com&format=json';
     $ch = curl_init($url); 
     $response = curl_exec($ch);
     curl_close($ch);
