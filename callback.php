@@ -22,7 +22,6 @@ if($somecontent_rcs_message == "album"){
     $response = curl_exec($ch);
     curl_close($ch);
 } elseif (strtolower(trim($somecontent_rcs_invite[0])) == "invite" ) {
-    // $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval(trim($somecontent_rcs_invite[1])) . '&message=www.rousseaukazi.com/testing3.php&format=json';
     $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval(trim($somecontent_rcs_invite[1])) . '&message=You%27re%20in%21%20Reply%20with%20007%20and%20a%20photo%20to%20join%20in%20on%20the%20fun%21&format=json';
     $ch = curl_init($url); 
     $response = curl_exec($ch);
