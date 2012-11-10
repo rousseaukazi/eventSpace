@@ -117,44 +117,19 @@
 		  	15514047775 => "Christopher Lo"
 		);
 
-		// this is the template for each 'album' - just c/p 
-		// lines 120 - 131, add the new $album_name_array value 
-		// to the dashboard, and be sure to change both values 
-		// in the $album_name_array[x] appropriately
-		echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $album_name_array[0] . '</h1></div>';
-		echo '<div data-role="content" align="center">';
-		for ($j = count($picture_array); $j >= 0; $j--) {
-			if ($keyword_array[$j] == $album_name_array[0]) {
-				echo '<div>' . $number_to_name[intval($number_array[$j])] . '</div>';	
-				echo '<div id="wrapper"><div id="content"><img src="' . $picture_array[$j] . '"</div></div></div><br>';
-				echo "<br>";
-			} 
-
-			
-		}
-		echo '</div>';
-		// end template
-
-		echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $album_name_array[1] . '</h1></div>';
-		echo '<div data-role="content" align="center">';
-		for ($l = count($picture_array); $l >= 0; $l--) {
-			if ($keyword_array[$l] == $album_name_array[1]){
-				echo '<div>' . $number_to_name[intval($number_array[$l])] . '</div>';	
-				echo '<div id="wrapper"><div id="content"><img src="' . $picture_array[$l] . '"</div></div></div><br>';
-				echo "<br>";
+		for ($l = 0; $l <= count($album_name_array); $l++) {
+				echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $album_name_array[$l] . '</h1></div>';
+				echo '<div data-role="content" align="center">';
+				for ($j = count($picture_array); $j >= 0; $j--) {
+					if ($keyword_array[$j] == $album_name_array[$l]) {
+						echo '<div>' . $number_to_name[intval($number_array[$j])] . '</div><div id="wrapper"><div id="content"><img src="' . $picture_array[$j] . '"</div></div></div><br><br>';
+					} 
+				}
+				echo '</div>';
 			}
 
-
-		}
-		echo '</div>';
-		// var_dump($picture_array);
-		// var_dump($number_array);
-		// var_dump($album_name_array);
-		// var_dump($keyword_array);
-
-		fclose($fh);
-
-	?>
+			fclose($fh);
+		?>
 
 
 </div><!-- /page -->
