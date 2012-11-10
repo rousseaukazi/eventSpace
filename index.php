@@ -92,7 +92,7 @@
 			} else if ($dataLine[0] == '1'){
 				array_push($number_array, $dataLine);
 			} else {
-				array_push($keyword_array, strtolower(trim($dataLine)));
+				array_push($keyword_array, strtolower(trim(preg_replace( '/[^[:print:]]/', '',$dataLine))));
 			}
 		}
 
@@ -117,7 +117,7 @@
 		  	15514047775 => "Christopher Lo"
 		);
 
-		for ($l = 0; $l <= count($album_name_array); $l++) {
+		for ($l = 0; $l < count($album_name_array); $l++) {
 				echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $album_name_array[$l] . '</h1></div>';
 				echo '<div data-role="content" align="center">';
 				for ($j = count($picture_array); $j >= 0; $j--) {
