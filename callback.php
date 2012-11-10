@@ -3,20 +3,20 @@
 $number_to_name = array(
     "16508420492" => "Rousseau Kazi",
     "18042294822" => "Channing Allen",
-    "18477226071" => "Suman Venkataswamy",
-    "14086246110" => "Ashley Malone",
-    "19518928892" => "Ashley Bennett",
-    "16505213837" => "Alexa Krakaris",
-    "18472716925" => "Jonathon Paul",
-    "19519929201" => "Jelani Hayes",
-    "14157866212" => "Sumaya Kazi",
-    "12532283438" => "Joshua Evenson",
-    "19413024516" => "Rob Balian",
-    "17143920591" => "Evan Kawahara",
-    "19145847487" => "Maddie Boyd",
-    "13046155153" => "Addison Litton",
-    "15514047775" => "Chistopher Lo",
-    "14014411418" => "Vihang Mehta"
+    "18477226071" => "Suman Venkataswamy"
+    // "14086246110" => "Ashley Malone",
+    // "19518928892" => "Ashley Bennett",
+    // "16505213837" => "Alexa Krakaris",
+    // "18472716925" => "Jonathon Paul",
+    // "19519929201" => "Jelani Hayes",
+    // "14157866212" => "Sumaya Kazi",
+    // "12532283438" => "Joshua Evenson",
+    // "19413024516" => "Rob Balian",
+    // "17143920591" => "Evan Kawahara",
+    // "19145847487" => "Maddie Boyd",
+    // "13046155153" => "Addison Litton",
+    // "15514047775" => "Chistopher Lo",
+    // "14014411418" => "Vihang Mehta"
 );
 
 $filename = 'day_three_test.txt';
@@ -37,11 +37,10 @@ if($somecontent_rcs_message == "album"){
     curl_close($ch);
 } elseif ($somecontent_rcs_message == "megaphone") {
     foreach ($number_to_name as $key => $value) {
-        $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($key) . '&message=testing%20megaphone%21&format=json';
+        $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($key) . '&message=Text%20Rousseau%20when%20you%20get%20this%20message%21&format=json';
         $ch = curl_init($url); 
         $response = curl_exec($ch);
         curl_close($ch);
-        break;
     }
 
 } elseif (strtolower(trim($somecontent_rcs_invite[0])) == "invite" ) {
