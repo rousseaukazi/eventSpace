@@ -97,7 +97,7 @@ mysql_query("INSERT INTO Entries VALUES ('$phone', NOW(),'$image', '$album')");
 //Email Logic
 /////////////
 
-$subject = $number_to_name[intval($somecontent_rcs_number)] . " just uploaded a photo!";
+$subject = $number_to_name[intval($phone)] . " just uploaded a photo!";
 
 ////////
 // Send
