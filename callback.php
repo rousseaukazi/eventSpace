@@ -2,34 +2,11 @@
 
 include 'connection.php';
 
-//////////////
-//Contact List
-//////////////
-
-$number_to_name = array(
-    "16508420492" => "Rousseau Kazi",
-    "18042294822" => "Channing Allen",
-    "18477226071" => "Suman Venkataswamy",
-    "14086246110" => "Ashley Malone",
-    // "19518928892" => "Ashley Bennett",
-    // "16505213837" => "Alexa Krakaris",
-    // "18472716925" => "Jonathon Paul",
-    // "19519929201" => "Jelani Hayes",
-    // "14157866212" => "Sumaya Kazi",
-    // "12532283438" => "Joshua Evenson",
-    // "19413024516" => "Rob Balian",
-    // "17143920591" => "Evan Kawahara",
-    // "19145847487" => "Maddie Boyd",
-    // "13046155153" => "Addison Litton",
-    // "15514047775" => "Chistopher Lo"
-    // "14014411418" => "Vihang Mehta"
-);
-
 /////////////////////////////////////
 //Parsing & Extracting the XML object
 /////////////////////////////////////
 
-$filename = 'day_three_test.txt';
+
 $raw_message = (string) file_get_contents('php://input');
 $simple_xml = simplexml_load_string($raw_message);
 $image = $simple_xml->images->image;
