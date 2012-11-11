@@ -13,7 +13,7 @@ $image = $simple_xml->images->image;
 $phone = $simple_xml->msisdn;
 $message = $simple_xml->message;
 $message = strtolower(trim($message));
-$album = "";
+
 
 ///////
 //Logic
@@ -60,12 +60,13 @@ if (count(explode(" ", $message)) > 1) {
     } else { 
 
 
+
 ////////////////////////////
 //Writing to SQL! Bitch
 ////////////////////////////
 
 
-mysql_query("INSERT INTO Entries VALUES ('$phone', NOW(),'$image', '$album')");
+mysql_query("INSERT INTO Entries VALUES ('$phone', NOW(),'$image', '$message')");
 
 
 
