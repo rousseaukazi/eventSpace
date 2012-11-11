@@ -33,7 +33,7 @@ $simple_xml = simplexml_load_string($raw_message);
 $somecontent_rcs_image = $simple_xml->images->image;
 $somecontent_rcs_number = $simple_xml->msisdn;
 $somecontent_rcs_message = $simple_xml->message;
-$somecontent_rcs_message = strtolower((trim($somecontent_rcs_message));
+$somecontent_rcs_message = strtolower(trim($somecontent_rcs_message));
 
 ///////
 //Logic
