@@ -1,5 +1,7 @@
 <?php
 
+include 'connection.php';
+
 //////////////
 //Contact List
 //////////////
@@ -30,22 +32,23 @@ $number_to_name = array(
 $filename = 'day_three_test.txt';
 $raw_message = (string) file_get_contents('php://input');
 $simple_xml = simplexml_load_string($raw_message);
-$somecontent_rcs_image = $simple_xml->images->image;
-$somecontent_rcs_number = $simple_xml->msisdn;
-$somecontent_rcs_message = $simple_xml->message;
-$somecontent_rcs_message = strtolower(trim($somecontent_rcs_message));
+$image = $simple_xml->images->image;
+$phone = $simple_xml->msisdn;
+$message = $simple_xml->message;
+$message = strtolower(trim($message));
+$album = "";
 
 ///////
 //Logic
 ///////    
 
-if (count(explode(" ", $somecontent_rcs_message)) > 1) {
+if (count(explode(" ", $message)) > 1) {
 
 /////////////////
 //Megaphone Logic
 /////////////////
 
-    $messageArray = explode(" ", $somecontent_rcs_message);
+    $messageArray = explode(" ", $message);
     if($messageArray[0] == "megaphone") {
         unset($messageArray[0]);
         $messageEncoded = urlencode(implode(" ", $messageArray));
@@ -72,7 +75,7 @@ if (count(explode(" ", $somecontent_rcs_message)) > 1) {
 //Album Logic
 /////////////
 
-    } elseif($somecontent_rcs_message == "album"){
+    } elseif($message == "album"){
         $url = 'https://api.mogreet.com/moms/transaction.send?client_id=1316&token=dbd7557a6a9d09ab13fda4b5337bc9c7&campaign_id=28420&to=' . intval($somecontent_rcs_number) . '&message=www.rousseaukazi.com/&format=json';
         $ch = curl_init($url); 
         $response = curl_exec($ch);
@@ -81,48 +84,26 @@ if (count(explode(" ", $somecontent_rcs_message)) > 1) {
 
 
 ////////////////////////////
-//Writing to .txt file logic
+//Writing to SQL! Bitch
 ////////////////////////////
 
-$somecontent = $somecontent_rcs_image . "\n" . $somecontent_rcs_number . "\n" . $somecontent_rcs_message;
 
-// Let's make sure the file exists and is writable first.
-if (is_writable($filename)) {
+mysql_query("INSERT INTO Entries VALUES ('$phone', NOW(),'$image', '$album')");
 
-    // In our example we're opening $filename in append mode.
-    // The file pointer is at the bottom of the file hence
-    // that's where $somecontent will go when we fwrite() it.
-    if (!$handle = fopen($filename, 'a')) {
-         echo "Cannot open file ($filename)";
-         exit;
-    }
 
-    // Write $somecontent to our opened file.
-    if (fwrite($handle, $somecontent . "\n") === FALSE) {
-        echo "Cannot write to file ($filename)";
-        exit;
-    }
 
-    echo "Success, wrote ($somecontent) to file ($filename)";
-
-    fclose($handle);
-
-} else {
-    echo "The file $filename is not writable";
-}
 
 /////////////
 //Email Logic
 /////////////
 
-$message = $somecontent_rcs_number;
 $subject = $number_to_name[intval($somecontent_rcs_number)] . " just uploaded a photo!";
 
 ////////
 // Send
 ////////
-mail('kazi.rousseau@gmail.com', $subject, $message);
-mail('cchanningallen@gmail.com', $subject, $message);
-mail('svenkat45@gmail.com', $subject, $message);
+mail('kazi.rousseau@gmail.com', $subject, $phone);
+mail('cchanningallen@gmail.com', $subject, $phone);
+mail('svenkat45@gmail.com', $subject, $phone);
 }
 ?>
