@@ -66,7 +66,7 @@
 	
 		while($info = mysql_fetch_array($data )) 
 		{
-			echo $info['Picture'];
+			
 			echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $info['Album'] . '</h1></div>';
 			echo '<div data-role="content" align="center">';
 			echo '<div id="wrapper"><div id="content"><img src="' . $info['Picture'] . '"</div></div></div><br><br>';
