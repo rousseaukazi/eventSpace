@@ -63,14 +63,15 @@
 		include "connection.php";
 
 		$data = mysql_query("SELECT * FROM Entries");
-	
+		
+		echo '<div data-role="content" align="center">';
+
 		while($info = mysql_fetch_array($data )) 
 		{
-			
-			echo '<div data-role="header" data-theme="d" data-content-theme="d"><h1> Album: '. $info['Album'] . '</h1></div>';
-			echo '<div data-role="content" align="center">';
-			echo '<div id="wrapper"><div id="content"><img src="' . $info['Picture'] . '"</div></div></div><br><br>';
-		} 
+			echo '<div id="wrapper"><div id="content"><img src="' . $info['Picture'] . '"</div></div><br><br>';
+		}
+
+		echo '</div>'; 
 
 	?>
 
