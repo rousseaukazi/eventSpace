@@ -77,7 +77,7 @@ $messageArray = explode(" ", $message);
 ////////////////////////////
 
 
-    mysql_query("INSERT INTO Entries (Phone, Picture, Album) VALUES ('$phone', '$image', '$message')");
+    mysql_query("INSERT INTO TestEntries (Phone, Picture, Album) VALUES ('$phone', '$image', '$message')");
 
     $thankYouMsg = "Awesome!_Check_out_your_picture_at_the_album_URL!!!";
 
