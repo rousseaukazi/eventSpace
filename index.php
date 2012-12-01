@@ -66,7 +66,7 @@
 		
 		echo '<div data-role="content" align="center">';
 
-		while($info = mysql_fetch_array($data )) 
+		while($info = mysql_fetch_array($data)) 
 		{
 			echo '<div id="wrapper"><div id="content"><img src="' . $info['Picture'] . '"</div></div><br><br>';
 		}

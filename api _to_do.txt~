@@ -2,7 +2,7 @@ user.php √
 input: phone number
 output: first, last, profile pic, timestamp
 
-signup.php (Rousseau) √ 
+signup.php (Rousseau) 
 input: first, last, phone, password
 output: boolean T/F
 
